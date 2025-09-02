@@ -13,7 +13,7 @@ function App() {
         intervalReference.current = setInterval(() => {
             setDegreeState((degree) => degree + 1);
             console.log("[APP.useEffect] intervalReference.current", intervalReference.current);
-        }, 50)
+        }, 1)
 
         console.log("[APP.useEffect] Goodbye");
 
