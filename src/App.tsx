@@ -45,6 +45,7 @@ function App() {
 
         const animate = () => {
             setDegreeState((degree) => (degree + 1) % 360);
+            console.log('[APP.useEffect] Animation');
             requestAnimationFrame(animate)
         }
 
