@@ -1,0 +1,12 @@
+.paragraph {
+    padding: 2vw;
+}
+
+.title {
+    color: green;
+}
+
+.content {
+    color: grey;
+    font-size: 1rem;
+}

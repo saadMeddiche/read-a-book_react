@@ -1,0 +1,27 @@
+html {
+    font-size: 16px;
+}
+
+h1, h2, p, body, html {
+  margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#root {
+    padding: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+    #root {
+        display: block;
+    }
+}
+
+

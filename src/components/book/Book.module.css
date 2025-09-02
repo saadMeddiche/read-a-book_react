@@ -1,0 +1,31 @@
+.title {
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+}
+
+.book {
+    background: saddlebrown;
+    padding: 2vw;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.leftArrow {
+    width: 30%;
+}
+
+.pageNumber {
+    width: 40%;
+}
+
+.rightArrow {
+    width: 30%;
+}

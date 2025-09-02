@@ -1,0 +1,23 @@
+.page {
+    background: lightgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw;
+    margin: 1vw
+}
+
+.title {
+    color: blue;
+    text-align: center;
+    font-size: 2rem;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    .page {
+        display: block;
+    }
+}
+
