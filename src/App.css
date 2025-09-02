@@ -1,0 +1,6 @@
+.app-container {
+    --app-linear-gradient-degree: 0deg;
+    min-height: inherit;
+    min-width: inherit;
+    background: linear-gradient(var(--app-linear-gradient-degree), #667eea 50%, #764ba2 50%);
+}
