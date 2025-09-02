@@ -1,36 +1,36 @@
 import './App.css'
-import {useEffect, useRef, useState} from "react";
 import * as React from "react";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
+    console.log('[APP] Hello');
+    const [degreeState, setDegreeState] = useState<number>(0); console.log("degreeState", degreeState);
+    const intervalReference = useRef(-1);  console.log("intervalReference", intervalReference);
 
-  const [degreeState, setDegreeState] = useState<number>(0);
-  const intervalReference  = useRef(-1);
+    useEffect(() => {
+        console.log('[APP.useEffect] Hello');
 
-  useEffect(() => {
+        intervalReference.current = setInterval(() => {
+            setDegreeState((degree) => degree + 1);
+        }, 50)
 
-    intervalReference.current = setInterval (() => {
-        setDegreeState((degree) => degree + 1);
-    },50)
+        return () => {
+            console.log('[APP.useEffect] Goodbye');
+            clearInterval(intervalReference.current)
+        };
 
+    }, []);
 
-    return () => {
-      if(intervalReference.current) {
-        clearInterval(intervalReference.current);
-      }
-    };
+    console.log('[APP] Render');
+    return (
+        <>
+            <div className="app-container" id="app-container"
+                 style={{'--app-linear-gradient-degree': `${degreeState}deg`} as React.CSSProperties}
+            >
 
-  });
-
-  return (
-    <>
-      <div className="app-container" id="app-container"
-           style={{'--app-linear-gradient-degree': `${degreeState}deg`} as React.CSSProperties}
-      >
-
-      </div>
-    </>
-  )
+            </div>
+        </>
+    )
 }
 
 export default App
