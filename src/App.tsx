@@ -2,25 +2,55 @@ import './App.css'
 import * as React from "react";
 import {useEffect, useRef, useState} from "react";
 
+// function App() {
+//     console.log('[APP] Hello');
+//     const [degreeState, setDegreeState] = useState<number>(0); console.log("degreeState", degreeState);
+//     const intervalReference = useRef(-1);  console.log("intervalReference", intervalReference);
+//
+//     useEffect(() => {
+//         console.log('[APP.useEffect] Mounting');
+//
+//         intervalReference.current = setInterval(() => {
+//             setDegreeState((degree) => degree + 1);
+//             console.log("[APP.useEffect] intervalReference.current", intervalReference.current);
+//         }, 1)
+//
+//         console.log("[APP.useEffect] Goodbye");
+//
+//         return () => {
+//             console.log('[APP.useEffect] Unmounting');
+//             clearInterval(intervalReference.current)
+//         };
+//
+//     }, []);
+//
+//     console.log('[APP] Goodbye');
+//     return (
+//         <>
+//             <div className="app-container" id="app-container"
+//                  style={{'--app-linear-gradient-degree': `${degreeState}deg`} as React.CSSProperties}
+//             >
+//
+//             </div>
+//         </>
+//     )
+// }
+
 function App() {
     console.log('[APP] Hello');
     const [degreeState, setDegreeState] = useState<number>(0); console.log("degreeState", degreeState);
-    const intervalReference = useRef(-1);  console.log("intervalReference", intervalReference);
 
     useEffect(() => {
         console.log('[APP.useEffect] Mounting');
 
-        intervalReference.current = setInterval(() => {
-            setDegreeState((degree) => degree + 1);
-            console.log("[APP.useEffect] intervalReference.current", intervalReference.current);
-        }, 1)
+        const animate = () => {
+            setDegreeState((degree) => (degree + 1) % 360);
+            requestAnimationFrame(animate)
+        }
+
+        animate();
 
         console.log("[APP.useEffect] Goodbye");
-
-        return () => {
-            console.log('[APP.useEffect] Unmounting');
-            clearInterval(intervalReference.current)
-        };
 
     }, []);
 
