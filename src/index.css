@@ -19,8 +19,8 @@ body{
 }
 
 #root {
-    min-height: 80vw;
-    min-width: 80vw;
+    min-height: min(80vw,80vh);
+    min-width: min(80vw,80vh);;
     display: flex;
 }
 
