@@ -8,20 +8,23 @@ function App() {
     const intervalReference = useRef(-1);  console.log("intervalReference", intervalReference);
 
     useEffect(() => {
-        console.log('[APP.useEffect] Hello');
+        console.log('[APP.useEffect] Mounting');
 
         intervalReference.current = setInterval(() => {
             setDegreeState((degree) => degree + 1);
+            console.log("[APP.useEffect] intervalReference.current", intervalReference.current);
         }, 50)
 
+        console.log("[APP.useEffect] Goodbye");
+
         return () => {
-            console.log('[APP.useEffect] Goodbye');
+            console.log('[APP.useEffect] Unmounting');
             clearInterval(intervalReference.current)
         };
 
     }, []);
 
-    console.log('[APP] Render');
+    console.log('[APP] Goodbye');
     return (
         <>
             <div className="app-container" id="app-container"
