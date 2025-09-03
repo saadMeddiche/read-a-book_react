@@ -1,27 +1,19 @@
-import type {JSX} from "react";
-import Article, {type ArticleProps} from "../article/Article.tsx";
+import type {ReactElement} from "react";
 import styles from './Page.module.css';
+import {type ParagraphProps} from "../paragraph/Paragraph.tsx";
 
 export type PageProps = {
-    title :string
-    articles: ArticleProps[];
+    children: ReactElement<ParagraphProps>[];
 }
 
 export default function Page(props: PageProps) {
     return (
         <div className={styles.page}>
-            <div className={styles.title}>
-                <h1 >{props.title}</h1>
-            </div>
             {
-                props.articles.map(createArticle)
+                props.children
             }
         </div>
     );
-}
-
-function createArticle(articleProps: ArticleProps, key: number): JSX.Element {
-    return <Article key={key} title={articleProps.title} paragraphs={articleProps.paragraphs} />;
 }
 
 

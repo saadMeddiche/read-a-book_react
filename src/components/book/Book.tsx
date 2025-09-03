@@ -1,9 +1,10 @@
 import styles from './Book.module.css'
-import {type ReactNode, useState} from "react";
+import {type ReactElement, useState} from "react";
+import type {ChapterProps} from "../chapter/Chapter.tsx";
 
 export type BookProps = {
     title: string;
-    children: ReactNode[];
+    children: ReactElement<ChapterProps>[];
 }
 
 export default function Book(props: BookProps) {
@@ -31,9 +32,12 @@ export default function Book(props: BookProps) {
 
             <div className={styles.content}>
                 {
-                    props.children[pageNumber]
+                    props.children.length === 0 ?
+                        ('No content')
+                        :
+                        (props.children[pageNumber])
                 }
-            </div> 
+            </div>
 
             <div className={styles.pagination}>
                 <div className={styles.leftArrow} onClick={previousPage}>
@@ -44,7 +48,7 @@ export default function Book(props: BookProps) {
                     Page #{pageNumber}
                 </div>
 
-                <div className={styles.rightArrow} onClick={nextPage} >
+                <div className={styles.rightArrow} onClick={nextPage}>
                     &rarr;
                 </div>
             </div>
