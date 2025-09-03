@@ -27,7 +27,7 @@ export default function Book(props: BookProps) {
         <div className={styles.book}>
 
             <div className={styles.title}>
-                {props.title}
+                <p>{props.title}</p>
             </div>
 
             <div className={styles.content}>
