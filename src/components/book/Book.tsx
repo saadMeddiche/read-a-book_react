@@ -4,7 +4,7 @@ import type {ChapterProps} from "../chapter/Chapter.tsx";
 
 export type BookProps = {
     title: string;
-    children: ReactElement<ChapterProps>[];
+    children?: ReactElement<ChapterProps>[];
 }
 
 export default function Book(props: BookProps) {
@@ -18,7 +18,7 @@ export default function Book(props: BookProps) {
     }
 
     const nextPage = () => {
-        if (pageNumber < props.children.length - 1) {
+        if (props.children && pageNumber < props.children?.length - 1) {
             setPageNumber(pageNumber + 1);
         }
     }
@@ -32,10 +32,10 @@ export default function Book(props: BookProps) {
 
             <div className={styles.content}>
                 {
-                    props.children.length === 0 ?
+                        props.children && props.children.length === 0 ?
                         ('No content')
                         :
-                        (props.children[pageNumber])
+                        (props.children && props.children[pageNumber])
                 }
             </div>
 
