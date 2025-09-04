@@ -2,4 +2,12 @@
     --app-linear-gradient-degree: 0deg;
     background: linear-gradient(var(--app-linear-gradient-degree), #667eea 50%, #764ba2 50%);
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .not-found{
+        color: white;
+        font-size: 3rem;
+    }
 }
