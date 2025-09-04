@@ -7,7 +7,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function App() {
     const [degreeState, setDegreeState] = useState<number>(0);
-    const [book, setBookState] = useState<BookProps | null>();
+    const [book, setBookState] = useState<BookProps | undefined | null>(undefined);
 
     useEffect(() => {
 
@@ -21,7 +21,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetch(`${BACKEND_URL}/books/1`)
+        fetch(`${BACKEND_URL}/books/2`)
             .then(response => {
                 if(response.ok) return response.json();
                 if(response.status === 404) return null;
@@ -36,7 +36,7 @@ function App() {
                  style={{'--app-linear-gradient-degree': `${degreeState}deg`} as React.CSSProperties}
             >
                 {
-                    book ? (
+                    book && (
                         <Book
                             key={book.id}
                             id={book.id}
@@ -45,9 +45,21 @@ function App() {
                             summary={book.summary}
                         />
                     )
-                        :
-                    (
-                        <div className={'not-found'}>Not Found</div>
+                }
+
+                {
+                    book === null && (
+                        <div className="no-book">
+                            No book found
+                        </div>
+                    )
+                }
+
+                {
+                    book === undefined && (
+                        <div className="loading-book">
+                            Loading book...
+                        </div>
                     )
                 }
 
