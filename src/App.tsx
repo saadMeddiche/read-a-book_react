@@ -21,7 +21,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetch(`${BACKEND_URL}/books/2`)
+        fetch(`${BACKEND_URL}/books/1`)
             .then(response => {
                 if(response.ok) return response.json();
                 if(response.status === 404) return null;
