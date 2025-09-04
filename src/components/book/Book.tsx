@@ -3,7 +3,10 @@ import {type ReactElement, useState} from "react";
 import type {ChapterProps} from "../chapter/Chapter.tsx";
 
 export type BookProps = {
+    id: number;
     title: string;
+    author: string;
+    summary: string;
     children?: ReactElement<ChapterProps>[];
 }
 
