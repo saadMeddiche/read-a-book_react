@@ -1,41 +1,9 @@
 import './App.css'
 import * as React from "react";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import Book, {type BookProps} from "./components/book/Book.tsx";
 
-// function App() {
-//     console.log('[APP] Hello');
-//     const [degreeState, setDegreeState] = useState<number>(0); console.log("degreeState", degreeState);
-//     const intervalReference = useRef(-1);  console.log("intervalReference", intervalReference);
-//
-//     useEffect(() => {
-//         console.log('[APP.useEffect] Mounting');
-//
-//         intervalReference.current = setInterval(() => {
-//             setDegreeState((degree) => degree + 1);
-//             console.log("[APP.useEffect] intervalReference.current", intervalReference.current);
-//         }, 1)
-//
-//         console.log("[APP.useEffect] Goodbye");
-//
-//         return () => {
-//             console.log('[APP.useEffect] Unmounting');
-//             clearInterval(intervalReference.current)
-//         };
-//
-//     }, []);
-//
-//     console.log('[APP] Goodbye');
-//     return (
-//         <>
-//             <div className="app-container" id="app-container"
-//                  style={{'--app-linear-gradient-degree': `${degreeState}deg`} as React.CSSProperties}
-//             >
-//
-//             </div>
-//         </>
-//     )
-// }
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function App() {
     const [degreeState, setDegreeState] = useState<number>(0);
@@ -53,7 +21,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:7070/books')
+        fetch(`${BACKEND_URL}/books`)
             .then(response => response.json())
             .then(data => setBooksState(data))
             .catch(error => console.error('Error fetching books:', error));
