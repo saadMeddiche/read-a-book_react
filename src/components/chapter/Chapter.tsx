@@ -1,10 +1,9 @@
 import styles from "./Chapter.module.css"
-import type {ReactElement} from "react";
-import {type PageProps} from "../page/Page.tsx";
+import Page, {type PageProps} from "../page/Page.tsx";
 
 export type ChapterProps = {
     title: string;
-    children: ReactElement<PageProps>[];
+    pages: PageProps[];
 }
 
 export default function Chapter(props: ChapterProps) {
@@ -12,8 +11,12 @@ export default function Chapter(props: ChapterProps) {
         <div className={styles.chapter}>
             <h1 className={styles.title}>{props.title}</h1>
             {
-                props.children
+                props.pages.map(createParagraph)
             }
         </div>
     );
+}
+
+function createParagraph(paragraph: PageProps) {
+    return <Page paragraphs={paragraph.paragraphs} />
 }

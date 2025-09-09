@@ -1,13 +1,13 @@
 import styles from './Book.module.css'
-import {type ReactElement, useState} from "react";
-import type {ChapterProps} from "../chapter/Chapter.tsx";
+import {useState} from "react";
+import Chapter, {type ChapterProps} from "../chapter/Chapter.tsx";
 
 export type BookProps = {
     id: number;
     title: string;
     author: string;
     summary: string;
-    children?: ReactElement<ChapterProps>[];
+    chapters?: ChapterProps[];
 }
 
 export default function Book(props: BookProps) {
@@ -21,7 +21,7 @@ export default function Book(props: BookProps) {
     }
 
     const nextPage = () => {
-        if (props.children && pageNumber < props.children?.length - 1) {
+        if (props.chapters && pageNumber < props.chapters?.length - 1) {
             setPageNumber(pageNumber + 1);
         }
     }
@@ -35,10 +35,10 @@ export default function Book(props: BookProps) {
 
             <div className={styles.content}>
                 {
-                        props.children && props.children.length === 0 ?
+                        props.chapters && props.chapters.length === 0 ?
                         ('No content')
                         :
-                        (props.children && props.children[pageNumber])
+                        (props.chapters && createChapter(props.chapters[pageNumber]))
                 }
             </div>
 
@@ -58,4 +58,8 @@ export default function Book(props: BookProps) {
 
         </div>
     );
+}
+
+function createChapter(chapter :ChapterProps) {
+    return <Chapter title={chapter.title} pages={chapter.pages} />
 }
