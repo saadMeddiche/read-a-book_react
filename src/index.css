@@ -20,7 +20,7 @@ body{
 
 #root {
     min-height: min(90vw,90vh);
-    min-width: min(90vw,90vh);;
+    min-width: min(90vw,90vh);
     display: flex;
 }
 
