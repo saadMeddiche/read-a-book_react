@@ -1,0 +1,51 @@
+.bookFrontCover {
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    .title {
+        width: 100%;
+        height: 10%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 1rem;
+    }
+
+    .coverImage {
+        height: 80%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 80%;
+            height: 80%;
+        }
+
+    }
+
+    .author {
+        height: 10%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 1.5rem;
+    }
+
+}
