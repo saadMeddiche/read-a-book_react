@@ -43,6 +43,7 @@ function App() {
                             title={book.title}
                             author={book.author}
                             summary={book.summary}
+                            coverImage={book.coverImage}
                         />
                     )
                 }
